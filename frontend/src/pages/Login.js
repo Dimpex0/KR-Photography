@@ -3,6 +3,7 @@ import { useState } from "react";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const domain = process.env.REACT_APP_DOMAIN;
 
   async function handleSubmit(e) {
@@ -11,6 +12,10 @@ export default function Login() {
       method: "POST",
       body: JSON.stringify({ username, password }),
     });
+    if (!response.ok) {
+      const responseData = await response.json();
+      setError(responseData.message);
+    }
   }
 
   return (
@@ -27,6 +32,7 @@ export default function Login() {
         value={password}
       />
       <button>Login</button>
+      {error && <h1>{error}</h1>}
     </form>
   );
 }
