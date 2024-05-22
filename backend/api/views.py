@@ -1,4 +1,5 @@
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
 import json
@@ -12,7 +13,6 @@ def get_images(request):
         return JsonResponse({'images': images})
 
 
-@csrf_exempt
 def login_view(request):
     data = json.loads(request.body)
     username = data.get('username')
@@ -23,3 +23,15 @@ def login_view(request):
     
     login(request, user)
     return JsonResponse({'message': 'Logged in succesfully'}, status=200)
+
+
+@login_required
+def check_session_view(request):
+    return JsonResponse({'message': 'Session is active'}, status=200)
+
+
+def logout_view(request):
+    if request.method == 'POST':
+        logout(request)
+        return JsonResponse({'message': 'Successfully logged out'}, status=200)
+    return JsonResponse({'error': 'Invalid request method'}, status=405)

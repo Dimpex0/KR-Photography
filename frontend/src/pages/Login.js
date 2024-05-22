@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { csrfToken } from "../utils/auth";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -11,6 +12,10 @@ export default function Login() {
     const response = await fetch(`${domain}login/`, {
       method: "POST",
       body: JSON.stringify({ username, password }),
+      credentials: "include",
+      headers: {
+        "X-CSRFToken": csrfToken,
+      },
     });
     if (!response.ok) {
       const responseData = await response.json();

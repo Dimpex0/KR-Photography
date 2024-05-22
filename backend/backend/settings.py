@@ -23,6 +23,8 @@ CORS_ALLOWED_ORIGINS = os.getenv('DJANGO_CORS_ALLOWED_ORIGINS', '').split(' ')
 
 CSRF_TRUSTED_ORIGINS = os.getenv('DJANGO_CSRF_TRUSTED_ORIGINS', '').split(' ')
 
+CORS_ALLOW_CREDENTIALS = True
+
 
 # Application definition
 
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
     
     'corsheaders',
 ]
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
