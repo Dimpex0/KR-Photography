@@ -4,8 +4,11 @@ import Home from "./pages/Home";
 import Root from "./pages/Root";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
+import { authActions } from "./store";
+import { useDispatch } from "react-redux";
+import Gallery from "./pages/Gallery";
 
-const domain = process.env.REACT_APP_DOMAIN;
+const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
 const router = createBrowserRouter([
   {
@@ -15,29 +18,31 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/login", element: <Login /> },
       { path: "/logout", element: <Logout /> },
+      { path: "/gallery/:category", element: <Gallery /> },
     ],
   },
 ]);
 
 function App() {
+  const dispatch = useDispatch();
   useEffect(() => {
     async function checkSession() {
       try {
-        const response = await fetch(`${domain}check-session/`, {
+        const response = await fetch(`${apiDomain}check-session/`, {
           method: "GET",
           credentials: "include",
         });
         if (!response.ok) {
-          //update user
+          dispatch(authActions.authenticate(false));
         } else {
-          //update user
+          dispatch(authActions.authenticate(true));
         }
       } catch (error) {
-        // update user
+        dispatch(authActions.authenticate(false));
       }
     }
     checkSession();
-  }, []);
+  }, [dispatch]);
   return <RouterProvider router={router} />;
 }
 

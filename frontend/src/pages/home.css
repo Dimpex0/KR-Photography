@@ -1,0 +1,16 @@
+:root {
+  --hero-image-height: 600px;
+}
+
+.hero-image {
+  width: 100vw;
+  height: var(--hero-image-height);
+  object-fit: cover;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+}
+
+.home-main {
+  margin-top: var(--hero-image-height);
+}

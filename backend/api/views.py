@@ -3,14 +3,20 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
 import json
-from .models import GalleryImage
+from .models import GalleryImage, GalleryCategory
 
 def get_images(request):
     if request.method == 'GET':
         category = request.GET['category']
         images_objects = GalleryImage.objects.filter(category__name=category)
         images = [image.image.url for image in images_objects]
-        return JsonResponse({'images': images})
+        return JsonResponse({'images': images}, status=200)
+    
+def get_categories(request):
+    if request.method == 'GET':
+        category_objects = GalleryCategory.objects.all()
+        categories = [category.name for category in category_objects]
+        return JsonResponse({'categories': categories}, status=200)
 
 
 def login_view(request):

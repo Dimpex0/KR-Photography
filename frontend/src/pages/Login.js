@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { csrfToken } from "../utils/auth";
 
+const apiDomain = process.env.REACT_APP_API_DOMAIN;
+
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const domain = process.env.REACT_APP_DOMAIN;
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const response = await fetch(`${domain}login/`, {
+    const response = await fetch(`${apiDomain}login/`, {
       method: "POST",
       body: JSON.stringify({ username, password }),
       credentials: "include",

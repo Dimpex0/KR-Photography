@@ -7,6 +7,9 @@ class GalleryCategory(models.Model):
         null=False,
     )
     
+    def __str__(self):
+        return self.name
+    
 class GalleryImage(models.Model):
     category = models.ForeignKey(
         GalleryCategory,

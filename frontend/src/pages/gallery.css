@@ -1,0 +1,71 @@
+.gallery-main {
+  padding: 20px 60px;
+  transition: 300ms;
+}
+
+.gallery-main:has(.focused-image-container) > :not(.focused-image-container) {
+  opacity: 0.2;
+}
+
+.gallery-main h1 {
+  text-align: center;
+}
+
+.gallery-main section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.gallery-main section img {
+  max-height: 300px;
+  max-width: 90vw;
+}
+
+.focused-image-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.focused-image-container img {
+  max-height: 90vh;
+  max-width: 90vw;
+  cursor: zoom-out;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.left-arrow,
+.right-arrow {
+  all: unset;
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  width: 30%;
+  height: 100vh;
+}
+
+.right-arrow {
+  right: 0;
+}
+
+.left-arrow i {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+}
+
+.right-arrow i {
+  position: absolute;
+  top: 50%;
+  right: 20%;
+  transform: translate(+50%, -50%);
+  font-size: 80px;
+}
