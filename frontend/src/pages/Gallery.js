@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Image from "../components/Image";
 import "./gallery.css";
+import PostImagesToCategoryForm from "../components/PostImagesToCategoryForm";
 
 const apiDomain = process.env.REACT_APP_API_DOMAIN;
 const domain = process.env.REACT_APP_DOMAIN;
@@ -9,10 +11,15 @@ const domain = process.env.REACT_APP_DOMAIN;
 export default function Gallery() {
   const [error, setError] = useState("");
   const [images, setImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(null);
   const { category } = useParams();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   document.title = `${category} | Галерия | KR Photography`;
+  document
+    .querySelector('meta[property="og:title"]')
+    .setAttribute("content", `${category} | KR Photography`);
 
   useEffect(() => {
     async function fetchImages() {
@@ -26,10 +33,11 @@ export default function Gallery() {
       const responseData = await response.json();
       const images = responseData.images;
       setImages(images);
+      setIsLoading(false);
     }
 
     fetchImages();
-  }, [setError, category, setImages]);
+  }, [setError, category, setImages, setIsLoading, isLoading]);
 
   function nextImage() {
     const currentIndex = images.indexOf(selectedImage);
@@ -51,20 +59,37 @@ export default function Gallery() {
 
   return (
     <main className="gallery-main">
+      {isAuthenticated ? (
+        <PostImagesToCategoryForm
+          category={category}
+          triggerLoading={setIsLoading}
+        >
+          <h3>Качи снимки</h3>
+          <input name="images" type="file" multiple="multiple" />
+          <button>Качи</button>
+        </PostImagesToCategoryForm>
+      ) : (
+        ""
+      )}
       <h1>{category}</h1>
       <section>
         {error && <p>{error}</p>}
+        {isLoading && <p>Снимките се зареждат</p>}
         {images.length ? (
           images.map((image) => (
             <Image
-              key={image}
+              key={image.id}
+              id={image.id}
+              triggerLoading={setIsLoading}
               alt={`$снимки от категория {category}`}
-              src={`${domain}${image}`}
+              src={`${domain}${image.image}`}
               onClick={() => {
                 setSelectedImage(image);
               }}
             />
           ))
+        ) : isLoading ? (
+          ""
         ) : (
           <p>Няма снимки в тази категория</p>
         )}

@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: rgb(83, 83, 83);
+  background-color: rgb(255, 251, 234);
   position: relative;
   /* color: #414042; */
   color: rgb(32, 32, 32);
@@ -13,6 +13,8 @@ body {
 
 #root {
   position: relative;
+  padding: 0;
+  margin: 0;
 }
 
 header {
@@ -26,6 +28,7 @@ header {
   backdrop-filter: blur(7.2px);
   -webkit-backdrop-filter: blur(7.2px);
   position: sticky;
+  z-index: 10;
   top: 30px;
   width: 95vw;
   height: 60px;
@@ -62,29 +65,56 @@ nav {
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
+  position: relative;
 }
 
 .navigation-list li {
   font-family: "korolev", sans-serif;
   font-weight: 300;
   font-style: normal;
-  color: whitesmoke;
+  color: rgb(26, 26, 26);
   transition: 300ms;
 }
-.navigation-list li:hover {
-  color: #414042;
+
+.navigation-list li a::before {
+  content: "";
+  width: 0;
+  height: 3px;
+  position: absolute;
+  background-color: #414042;
+  bottom: 0;
+  left: 0;
+  transition: 300ms;
 }
 
-.navigation-list .active {
-  color: #414042;
+.navigation-list li a:hover::before {
+  width: 100%;
+}
+
+.navigation-list .active::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #414042;
 }
 
 .dropdown-container {
+  height: 23px;
+  color: #414042;
   position: relative;
 }
 
-.dropdown-container:has(.active) {
-  color: #414042;
+.dropdown-container:has(.active)::before {
+  content: "";
+  width: 0;
+  height: 3px;
+  position: absolute;
+  background-color: #414042;
+  bottom: 0;
+  left: 0;
 }
 
 .dropdown {
@@ -101,7 +131,7 @@ nav {
   list-style-type: none;
   padding: 10px;
   margin: 0;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 6px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.2px);
@@ -109,7 +139,149 @@ nav {
   transition: 300ms;
 }
 
-.visible {
+.dropdown li a {
+  color: #414042;
+}
+
+.dropdown.visible {
   opacity: 1;
   visibility: visible;
+}
+
+.admin-form {
+  background-color: whitesmoke;
+  width: 400px;
+  padding: 10px 40px;
+  margin: auto;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-form h3 {
+  margin: 0;
+}
+
+.navigation-list-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 790px) {
+  .navigation-list {
+    display: none;
+  }
+
+  header img {
+    width: 70px;
+  }
+
+  .nav-button {
+    display: block;
+    position: relative;
+    z-index: 11;
+    min-width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
+
+  .nav-button-element {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #414042;
+    transition: 300ms;
+  }
+
+  .nav-button-element:first-of-type {
+    top: 10px;
+  }
+
+  .nav-button-element:nth-of-type(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .nav-button-element:nth-of-type(3) {
+    bottom: 10px;
+  }
+
+  .nav-button.active .nav-button-element:nth-of-type(2) {
+    opacity: 0;
+  }
+
+  .nav-button.active .nav-button-element:first-of-type {
+    transform: rotate(45deg);
+    top: calc(50% - 2px);
+  }
+
+  .nav-button.active .nav-button-element:nth-of-type(3) {
+    transform: rotate(-45deg);
+    bottom: 50%;
+  }
+
+  .navigation-list-mobile {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0 50px;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: lightgray;
+    transition: 300ms;
+    z-index: 10;
+  }
+
+  .navigation-list-mobile.visible {
+    display: flex;
+  }
+
+  .navigation-list-mobile li {
+    width: 300px;
+  }
+
+  .navigation-list-mobile li a {
+    font-size: 30px;
+  }
+
+  .dropdown-mobile {
+    opacity: 0;
+    margin-top: 12px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    visibility: hidden;
+    height: 0;
+    list-style-type: none;
+    padding: 0;
+    transition: 300ms;
+  }
+
+  .dropdown-container:has(.visible) {
+    height: auto;
+  }
+
+  .dropdown-mobile.visible {
+    visibility: visible;
+    height: auto;
+    opacity: 1;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .navigation-list-mobile {
+    gap: 20px;
+  }
+
+  .navigation-list-mobile li a {
+    font-size: 20px;
+  }
 }

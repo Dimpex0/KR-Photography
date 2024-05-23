@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { csrfToken } from "../utils/auth";
+import { getCsrfToken } from "../utils/auth";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authActions } from "../store";
 
 const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
@@ -7,6 +10,8 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -15,12 +20,15 @@ export default function Login() {
       body: JSON.stringify({ username, password }),
       credentials: "include",
       headers: {
-        "X-CSRFToken": csrfToken,
+        "X-CSRFToken": getCsrfToken(),
       },
     });
     if (!response.ok) {
       const responseData = await response.json();
       setError(responseData.message);
+    } else {
+      dispatch(authActions.authenticate(true));
+      return navigate("/");
     }
   }
 

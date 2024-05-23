@@ -1,10 +1,16 @@
 import { useState } from "react";
-import { csrfToken } from "../utils/auth";
+import { getCsrfToken } from "../utils/auth";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authActions } from "../store";
 
 const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
 export default function Logout() {
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  console.log(getCsrfToken());
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -12,11 +18,14 @@ export default function Logout() {
       method: "POST",
       credentials: "include",
       headers: {
-        "X-CSRFToken": csrfToken,
+        "X-CSRFToken": getCsrfToken(),
       },
     });
     if (!response.ok) {
       setError('Couldn"t logout');
+    } else {
+      dispatch(authActions.authenticate(false));
+      return navigate("/");
     }
   }
 
