@@ -10,9 +10,11 @@ export default function PostImagesToCategoryForm({
   ...props
 }) {
   const [message, setMessage] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
 
   async function handleFormSubmit(e) {
     e.preventDefault();
+    setIsUploading(true);
     const data = new FormData(e.target);
 
     const response = await fetch(
@@ -30,11 +32,15 @@ export default function PostImagesToCategoryForm({
     const responseData = await response.json();
     setMessage(responseData.message);
     triggerLoading(true);
+    setIsUploading(false);
     e.target.reset();
   }
   return (
     <form {...props} className="admin-form" onSubmit={handleFormSubmit}>
       {children}
+      <button disabled={isUploading}>
+        {isUploading ? "Снимките се качват" : "Качи"}
+      </button>
       {message && <p>{message}</p>}
     </form>
   );

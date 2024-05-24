@@ -15,8 +15,10 @@ export default function Root() {
   useEffect(() => {
     async function fetchCategories() {
       const response = await fetch(`${apiDomain}get-categories/`);
-      const responseData = await response.json();
-      setCategories(responseData.categories);
+      if (response.ok) {
+        const responseData = await response.json();
+        setCategories(responseData.categories);
+      }
     }
 
     fetchCategories();
@@ -75,7 +77,7 @@ export default function Root() {
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "inactive")}
-            to="/login"
+            to="/services-and-contacts"
             onClick={() => {
               setNavVisible(false);
             }}
@@ -145,7 +147,7 @@ export default function Root() {
             <li>
               <NavLink
                 className={({ isActive }) => (isActive ? "active" : "inactive")}
-                to="/login"
+                to="/services-and-contacts"
               >
                 Услуги и контакти
               </NavLink>

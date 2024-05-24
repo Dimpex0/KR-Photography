@@ -66,7 +66,6 @@ export default function Gallery() {
         >
           <h3>Качи снимки</h3>
           <input name="images" type="file" multiple="multiple" />
-          <button>Качи</button>
         </PostImagesToCategoryForm>
       ) : (
         ""
@@ -100,7 +99,7 @@ export default function Gallery() {
             onClick={() => {
               setSelectedImage(null);
             }}
-            src={`${domain}${selectedImage}`}
+            src={`${domain}${selectedImage.image}`}
             alt={category}
           />
           <button className="left-arrow" onClick={previousImage}>

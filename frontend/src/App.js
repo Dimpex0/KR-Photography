@@ -7,6 +7,7 @@ import Logout from "./pages/Logout";
 import { authActions } from "./store";
 import { useDispatch } from "react-redux";
 import Gallery from "./pages/Gallery";
+import Services from "./pages/Services";
 
 const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/logout", element: <Logout /> },
       { path: "/gallery/:category", element: <Gallery /> },
+      { path: "/services-and-contacts", element: <Services /> },
     ],
   },
 ]);
