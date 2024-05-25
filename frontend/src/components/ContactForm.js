@@ -1,18 +1,28 @@
 import "./ContactForm.css";
+import { useSelector } from "react-redux";
 
 export default function ContactForm() {
+  const categories = useSelector((state) => state.categories.categories);
   return (
     <div>
       <form className="contact-form">
         <div className="form-row">
-          <input name="first-name" placeholer="Име" required />
-          <input name="last-name" placeholer="Фамилия" required />
+          <input type="text" name="first-name" placeholder="Име" required />
+          <input name="last-name" placeholder="Фамилия" required />
         </div>
         <div className="form-row">
-          <input name="phone" type="tel" placeholer="Телефон" required />
-          <input name="mail" placeholer="Имейл" required />
+          <input name="phone" type="tel" placeholder="Телефон" required />
+          <input name="mail" placeholder="Имейл" required />
         </div>
-        <textarea placeholer="Повече информация" required />
+        <select name="category" required>
+          {categories &&
+            categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+        </select>
+        <textarea placeholder="Повече информация..." required />
         <button>Изпрати</button>
       </form>
       <div className="icons-container">

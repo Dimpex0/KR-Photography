@@ -55,6 +55,11 @@ textarea {
   resize: none;
 }
 
+.contact-form select {
+  width: 100%;
+  padding: 10px;
+}
+
 .contact-form button {
   all: unset;
   cursor: pointer;
@@ -62,6 +67,7 @@ textarea {
   color: whitesmoke;
   padding: 10px 20px;
   font-size: 20px;
+  border-radius: 6px;
   transition: 300ms;
 }
 

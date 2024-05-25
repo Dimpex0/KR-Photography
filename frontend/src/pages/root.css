@@ -168,7 +168,7 @@ nav {
   display: none;
 }
 
-@media screen and (max-width: 790px) {
+@media screen and (max-width: 1000px) {
   .navigation-list {
     display: none;
   }

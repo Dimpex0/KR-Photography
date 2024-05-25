@@ -3,10 +3,13 @@ import logoImg from "../assets/images/logo_black_nobg.png";
 import "./root.css";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { categoriesAction } from "../store";
+import { useDispatch } from "react-redux";
 
 const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
 export default function Root() {
+  const dispatch = useDispatch();
   const [dropDownVisible, setDropdownVisible] = useState(false);
   const [navVisible, setNavVisible] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -18,6 +21,7 @@ export default function Root() {
       if (response.ok) {
         const responseData = await response.json();
         setCategories(responseData.categories);
+        dispatch(categoriesAction.setCategories(responseData.categories));
       }
     }
 

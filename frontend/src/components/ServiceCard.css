@@ -1,0 +1,139 @@
+.flip-card {
+  width: 800px;
+  aspect-ratio: 4/3;
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+}
+.flip-card > p {
+  font-family: "korolev", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 20px;
+  color: whitesmoke;
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  margin: 0;
+}
+
+.flip-card-front h3 {
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  text-align: center;
+  top: 20px;
+  font-size: 50px;
+  font-family: "Lobster", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: whitesmoke;
+}
+
+.flip-card-front p {
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  text-align: center;
+  top: 90px;
+  font-size: 20px;
+  font-family: "Lobster", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: whitesmoke;
+}
+
+.flip-card-front img {
+  width: 100%;
+}
+
+.flip-card-info {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -80%);
+  text-align: center;
+  width: 90%;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.2px);
+  -webkit-backdrop-filter: blur(7.2px);
+  padding: 10px;
+  transition: 300ms;
+}
+
+.flip-card-info ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 24px;
+  font-family: "korolev", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+@media screen and (max-width: 1000px) {
+  .flip-card-info.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .flip-card > p {
+    display: block;
+  }
+
+  .flip-card {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .flip-card-front h3 {
+    font-size: 40px;
+  }
+
+  .flip-card-front p {
+    top: 70px;
+  }
+
+  .flip-card > p {
+    bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .flip-card-front h3 {
+    font-size: 30px;
+    top: 10px;
+  }
+
+  .flip-card-front p {
+    font-size: 16px;
+    top: 50px;
+  }
+
+  .flip-card > p {
+    bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 1001px) {
+  .flip-card-info {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .flip-card:hover .flip-card-info {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .flip-card > p {
+    display: none;
+  }
+}

@@ -3,15 +3,23 @@
 }
 
 .services-container {
-  background-color: white;
   width: 70%;
+  padding: 20px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
 .contacts-container {
   position: fixed;
-  top: 140px;
+  /* top: 140px; */
+  top: 0;
+  padding-top: 280px;
   right: 0;
   width: 30%;
+  background-color: lightgrey;
+  height: 100vh;
 }
 
 .contacts-container h3 {
@@ -20,4 +28,23 @@
   font-family: "Lobster", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+@media screen and (max-width: 1230px) {
+  .contacts-container {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 50px 0;
+  }
+
+  .services-container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .services-container {
+    padding: 30px;
+  }
 }
