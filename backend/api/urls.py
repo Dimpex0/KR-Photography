@@ -6,6 +6,7 @@ urlpatterns = [
     path('get-categories/', views.get_categories),
     path('post-images-to-category/', views.post_images_to_category),
     path('delete-image/', views.delete_image),
+    path('send-mail/', views.send_contact_form_mail),
     path('login/', views.login_view),
     path('logout/', views.logout_view),
     path('check-session/', views.check_session_view),

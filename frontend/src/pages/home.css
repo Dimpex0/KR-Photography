@@ -18,6 +18,21 @@
   left: 0;
 }
 
+.hero-container h1 {
+  position: absolute;
+  z-index: 10;
+  top: 90%;
+  transform: translateY(-90%);
+  width: 100%;
+  font-family: "subway-berlin-sc", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 60px;
+  color: white;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
 .hero-image {
   position: absolute;
   width: 100%;
@@ -58,5 +73,89 @@
   }
   100% {
     opacity: 0;
+  }
+}
+
+.home-main {
+  padding: 0 100px;
+}
+
+.home-main h1 {
+  text-align: center;
+  font-size: 80px;
+  font-family: "Lobster", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  border-bottom: 3px double #424242;
+  width: 600px;
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+.home-main p {
+  font-family: "korolev", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  text-align: center;
+  font-size: 30px;
+}
+
+@media screen and (max-width: 900px) {
+  .hero-container h1 {
+    font-size: 40px;
+  }
+
+  .home-main h1 {
+    font-size: 60px;
+    width: 450px;
+  }
+
+  .home-main p {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .home-main {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .hero-container h1 {
+    font-size: 30px;
+  }
+
+  .home-main h1 {
+    font-size: 50px;
+    width: 300px;
+  }
+
+  .home-main p {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .hero-container h1 {
+    font-size: 20px;
+    top: 95%;
+  }
+
+  .home-main h1 {
+    font-size: 30px;
+    width: 200px;
+    margin-bottom: 20px;
+  }
+
+  .home-main p {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .hero-container h1 {
+    font-size: 20px;
+    width: 100%;
   }
 }

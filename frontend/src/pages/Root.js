@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { categoriesAction } from "../store";
 import { useDispatch } from "react-redux";
+import Footer from "../components/Footer";
 
 const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
@@ -184,9 +185,7 @@ export default function Root() {
         </div>
       </header>
       <Outlet />
-      <footer>
-        <h1>Footer</h1>
-      </footer>
+      <Footer />
     </>
   );
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getCsrfToken } from "../utils/auth";
+import "./PostImagesToCategoryForm.css";
 
 const apiDomain = process.env.REACT_APP_API_DOMAIN;
 

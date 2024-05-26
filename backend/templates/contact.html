@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contact form</title>
+  </head>
+  <body>
+    <h1>Съобщение от контактна форма</h1>
+    <p>Услуга: {{ service }}</p>
+    <p>
+      Съобщение: <br />
+      {{ description|linebreaks }}
+    </p>
+    <p>
+      Данни на клиента: <br />
+      Имена: {{ first_name }} {{ last_name }} <br />
+      Телефон: {{ phone }} <br />
+      Имейл: {{ email }}
+    </p>
+  </body>
+</html>

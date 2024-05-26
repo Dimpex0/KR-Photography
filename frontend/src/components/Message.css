@@ -1,0 +1,37 @@
+.message {
+  position: fixed;
+  top: 120px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  padding: 14px;
+  border-radius: 6px;
+  font-family: "korolev", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.2px);
+  -webkit-backdrop-filter: blur(7.2px);
+}
+
+.message * {
+  margin: 0;
+}
+
+.message.ok i {
+  color: lightgreen;
+}
+
+.message.bad i {
+  color: lightcoral;
+}
+
+@media screen and (max-width: 1000px) {
+  .message {
+    right: 0;
+  }
+}

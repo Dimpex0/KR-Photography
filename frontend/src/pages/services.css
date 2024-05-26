@@ -18,8 +18,9 @@
   padding-top: 280px;
   right: 0;
   width: 30%;
-  background-color: lightgrey;
+  background-color: rgb(179, 173, 153);
   height: 100vh;
+  box-shadow: 10px 0 20px 10px rgba(0, 0, 0);
 }
 
 .contacts-container h3 {
@@ -28,6 +29,18 @@
   font-family: "Lobster", sans-serif;
   font-weight: 400;
   font-style: normal;
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+.contacts-container p {
+  text-align: center;
+  font-family: "korolev", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  margin: 0;
+  margin-bottom: 30px;
+  font-size: 20px;
 }
 
 @media screen and (max-width: 1230px) {
@@ -36,6 +49,7 @@
     width: 100%;
     height: auto;
     padding: 50px 0;
+    box-shadow: unset;
   }
 
   .services-container {

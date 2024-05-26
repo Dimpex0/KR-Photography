@@ -1,0 +1,9 @@
+.admin-form {
+  width: 400px;
+}
+
+@media screen and (max-width: 515px) {
+  .admin-form {
+    width: 100%;
+  }
+}

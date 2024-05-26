@@ -67,6 +67,7 @@
 }
 
 .flip-card-info ul {
+  padding: 0;
   list-style-type: none;
   display: flex;
   flex-direction: column;
@@ -92,6 +93,12 @@
   }
 }
 
+@media screen and (max-width: 950px) {
+  .flip-card-info ul {
+    font-size: 20px;
+  }
+}
+
 @media screen and (max-width: 740px) {
   .flip-card-front h3 {
     font-size: 40px;
@@ -103,6 +110,20 @@
 
   .flip-card > p {
     bottom: 10px;
+  }
+
+  .flip-card-info ul {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .flip-card-info ul {
+    font-size: 14px;
+  }
+
+  .flip-card-info {
+    top: 75%;
   }
 }
 
@@ -119,6 +140,23 @@
 
   .flip-card > p {
     bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .flip-card-info ul {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .flip-card h3 {
+    font-size: 24px;
+  }
+
+  .flip-card-front p {
+    top: 40px;
+    font-size: 12px;
   }
 }
 

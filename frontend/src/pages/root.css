@@ -28,7 +28,7 @@ header {
   backdrop-filter: blur(7.2px);
   -webkit-backdrop-filter: blur(7.2px);
   position: sticky;
-  z-index: 10;
+  z-index: 11;
   top: 30px;
   width: 95vw;
   height: 60px;

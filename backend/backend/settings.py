@@ -58,7 +58,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,6 +131,13 @@ if DEBUG:
 else:
     MEDIA_ROOT = os.getenv('DJANGO_MEDIA_ROOT', '')
     STATIC_ROOT = os.getenv('DJANGO_STATIC_ROOT', '')
+    
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = os.getenv('DJANGO_EMAIL_PORT', 587)
+EMAIL_USE_TLS = bool(int(os.getenv('DJANGO_EMAIL_USE_TLS', 1)))
+EMAIL_HOST_USER = os.getenv('DJANGO_EMAIL_HOST_USER', None)
+EMAIL_HOST_PASSWORD = os.getenv('DJANGO_EMAIL_HOST_PASSWORD', None)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
