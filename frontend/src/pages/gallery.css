@@ -59,6 +59,10 @@
   right: 0;
 }
 
+.left-arrow {
+  left: 0;
+}
+
 .left-arrow i {
   position: absolute;
   top: 50%;
