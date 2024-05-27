@@ -123,7 +123,7 @@ nav {
   position: absolute;
   top: 45px;
   left: 8px;
-  width: 300px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -237,18 +237,25 @@ nav {
     background-color: lightgray;
     transition: 300ms;
     z-index: 10;
+    overflow-y: scroll;
   }
 
   .navigation-list-mobile.visible {
     display: flex;
+    width: 100%;
+    justify-content: center;
   }
 
   .navigation-list-mobile li {
-    width: 300px;
+    width: 100%;
   }
 
   .navigation-list-mobile li a {
     font-size: 30px;
+  }
+
+  .dropdown-container {
+    width: 100%;
   }
 
   .dropdown-mobile {
@@ -262,7 +269,12 @@ nav {
     height: 0;
     list-style-type: none;
     padding: 0;
+    width: 100%;
     transition: 300ms;
+  }
+
+  .dropdown-mobile li {
+    width: 100%;
   }
 
   .dropdown-container:has(.visible) {
@@ -276,12 +288,24 @@ nav {
   }
 }
 
-@media screen and (max-height: 600px) {
+@media screen and (max-height: 950px) {
+  .navigation-list-mobile li a {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-height: 740px) {
   .navigation-list-mobile {
     gap: 20px;
   }
+}
+
+@media screen and (max-height: 580px) {
+  .navigation-list-mobile {
+    padding-top: 80px;
+  }
 
   .navigation-list-mobile li a {
-    font-size: 20px;
+    font-size: 10px;
   }
 }

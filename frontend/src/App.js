@@ -8,6 +8,7 @@ import { authActions } from "./store";
 import { useDispatch } from "react-redux";
 import Gallery from "./pages/Gallery";
 import Services from "./pages/Services";
+import { getCsrfToken } from "./utils/auth";
 
 const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
@@ -30,10 +31,15 @@ function App() {
   useEffect(() => {
     async function checkSession() {
       try {
+        console.log(`${apiDomain}check-session/`);
         const response = await fetch(`${apiDomain}check-session/`, {
           method: "GET",
           credentials: "include",
+          headers: {
+            "X-CSRFToken": getCsrfToken(),
+          },
         });
+        console.log(await response.json());
         if (!response.ok) {
           dispatch(authActions.authenticate(false));
         } else {

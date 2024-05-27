@@ -1,4 +1,3 @@
-# from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
@@ -19,10 +18,14 @@ def get_images(request):
     
 def get_categories(request):
     if request.method == 'GET':
-        category_objects = GalleryCategory.objects.all()
-        categories = [category.name for category in category_objects]
-        return JsonResponse({'categories': categories}, status=200)
-    
+        try:
+            category_objects = GalleryCategory.objects.all()
+            categories = [category.name for category in category_objects]
+            return JsonResponse({'categories': categories}, status=200)
+        except:
+            return JsonResponse({'message': "Couldn't fetch categories."}, status=500)
+    else:
+        return JsonResponse({'message': "Invalid http method"}, status=405)
     
 @login_required
 def post_images_to_category(request):
@@ -89,15 +92,19 @@ def send_contact_form_mail(request):
 
 
 def login_view(request):
-    data = json.loads(request.body)
-    username = data.get('username')
-    password = data.get('password')
-    user = authenticate(username=username, password=password)
-    if not user:
-        return JsonResponse({'message': "Wrong credentials"}, status=400)
-    
-    login(request, user)
-    return JsonResponse({'message': 'Logged in succesfully'}, status=200)
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            username = data.get('username')
+            password = data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return JsonResponse({'message': 'Logged in successfully'}, status=200)
+            return JsonResponse({'message': "Wrong credentials"}, status=400)
+        except:
+            return JsonResponse({'message': 'Server error, please contact administrator'}, status=500)
+    return JsonResponse({'message': 'Invalid HTTP method'}, status=405)
 
 
 @login_required

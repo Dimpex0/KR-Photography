@@ -15,6 +15,7 @@ export default function Login() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setError("");
     const response = await fetch(`${apiDomain}login/`, {
       method: "POST",
       body: JSON.stringify({ username, password }),
@@ -23,6 +24,8 @@ export default function Login() {
         "X-CSRFToken": getCsrfToken(),
       },
     });
+
+    console.log(response);
     if (!response.ok) {
       const responseData = await response.json();
       setError(responseData.message);

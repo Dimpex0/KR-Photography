@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="upper-row">
         <img alt="logo" src={logoImg} />
         <p>
-          FOCUS<i class="fa-solid fa-camera-retro"></i>BOKUS
+          FOCUS<i className="fa-solid fa-camera-retro"></i>BOKUS
         </p>
         <div className="footer-icons-container">
           <a href="tel:+359878367385">

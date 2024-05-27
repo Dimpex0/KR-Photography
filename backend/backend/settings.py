@@ -130,7 +130,7 @@ if DEBUG:
     MEDIA_ROOT = BASE_DIR / 'media'
 else:
     MEDIA_ROOT = os.getenv('DJANGO_MEDIA_ROOT', '')
-    STATIC_ROOT = os.getenv('DJANGO_STATIC_ROOT', '')
+    STATIC_ROOT = os.getenv('DJANGO_STATIC_ROOT', '')\
     
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

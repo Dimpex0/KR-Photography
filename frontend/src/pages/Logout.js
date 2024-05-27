@@ -10,7 +10,6 @@ export default function Logout() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  console.log(getCsrfToken());
 
   async function handleSubmit(e) {
     e.preventDefault();

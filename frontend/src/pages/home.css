@@ -20,7 +20,7 @@
 
 .hero-container h1 {
   position: absolute;
-  z-index: 10;
+  z-index: 9;
   top: 90%;
   transform: translateY(-90%);
   width: 100%;
