@@ -12,7 +12,7 @@ from .models import GalleryImage, GalleryCategory
 def get_images(request):
     if request.method == 'GET':
         category = request.GET['category']
-        images_objects = GalleryImage.objects.filter(category__name=category)
+        images_objects = GalleryImage.objects.filter(category__name=category).order_by('id')
         images = [{'image': image.image.url, 'id': image.pk} for image in images_objects[::-1]]
         return JsonResponse({'images': images}, status=200)
     
