@@ -38,7 +38,6 @@
 .focused-image-container img {
   max-height: 90vh;
   max-width: 90vw;
-  cursor: zoom-out;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -79,8 +78,56 @@
   font-size: 80px;
 }
 
+.close-btn {
+  all: unset;
+  cursor: pointer;
+  position: fixed;
+  left: 50%;
+  bottom: 25px;
+  transform: translate(-50%, -25px);
+  background-color: white;
+  clip-path: circle();
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media screen and (max-width: 790px) {
   .gallery-main h1 {
+    font-size: 40px;
+  }
+
+  .left-arrow i,
+  .right-arrow i {
+    font-size: 60px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .close-btn {
+    bottom: 30px;
+    transform: translate(-50%, -30px);
+  }
+
+  .left-arrow i,
+  .right-arrow i {
+    font-size: 40px;
+  }
+
+  .gallery-main {
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .close-btn {
+    bottom: 50px;
+    transform: translate(-50%, -50px);
+  }
+
+  .left-arrow i,
+  .right-arrow i {
     font-size: 40px;
   }
 }

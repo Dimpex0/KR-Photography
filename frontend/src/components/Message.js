@@ -10,7 +10,7 @@ export default function Message({ message, status, duration = 4000 }) {
     }, duration);
 
     return () => clearTimeout(timeout);
-  }, []);
+  }, [duration]);
 
   if (!visible) {
     return null;

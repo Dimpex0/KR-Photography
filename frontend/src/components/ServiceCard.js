@@ -9,7 +9,7 @@ export default function ServiceCard({ title, image, infoList, children }) {
       <div className="flip-card-front">
         <h3>{title}</h3>
         {children}
-        <img src={image} />
+        <img alt="" src={image} />
       </div>
       <div className={`flip-card-info${infoActive ? " active" : ""}`}>
         <ul>

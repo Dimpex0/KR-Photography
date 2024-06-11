@@ -25,7 +25,6 @@ export default function Login() {
       },
     });
 
-    console.log(response);
     if (!response.ok) {
       const responseData = await response.json();
       setError(responseData.message);

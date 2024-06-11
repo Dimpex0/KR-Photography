@@ -79,6 +79,7 @@ export default function Gallery() {
             <Image
               key={image.id}
               id={image.id}
+              dimensions={image.dimensions}
               triggerLoading={setIsLoading}
               alt={`$снимки от категория {category}`}
               src={`${domain}${image.image}`}
@@ -95,18 +96,20 @@ export default function Gallery() {
       </section>
       {selectedImage && (
         <div className="focused-image-container">
-          <img
-            onClick={() => {
-              setSelectedImage(null);
-            }}
-            src={`${domain}${selectedImage.image}`}
-            alt={category}
-          />
+          <img src={`${domain}${selectedImage.image}`} alt={category} />
           <button className="left-arrow" onClick={previousImage}>
             <i className="fa-solid fa-chevron-left"></i>
           </button>
           <button className="right-arrow" onClick={nextImage}>
             <i className="fa-solid fa-chevron-right"></i>
+          </button>
+          <button
+            className="close-btn"
+            onClick={() => {
+              setSelectedImage(null);
+            }}
+          >
+            <i className="fa-solid fa-xmark"></i>
           </button>
         </div>
       )}

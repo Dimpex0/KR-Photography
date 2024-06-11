@@ -27,7 +27,7 @@ export default function Root() {
     }
 
     fetchCategories();
-  }, [setCategories]);
+  }, [setCategories, dispatch]);
 
   return (
     <>
