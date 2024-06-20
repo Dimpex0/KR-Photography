@@ -24,8 +24,7 @@
 }
 
 .gallery-main section img {
-  max-height: 300px;
-  max-width: 90vw;
+  height: 300px;
 }
 
 .focused-image-container {

@@ -38,7 +38,7 @@ export default function Image({ id, triggerLoading, dimensions, ...props }) {
         alt=""
         {...props}
       />
-      <div className="loader"></div>
+      {isLoading && <div className="loader"></div>}
       {isAuthenticated && (
         <button className="delete-btn" onClick={handleDelete}>
           Delete
