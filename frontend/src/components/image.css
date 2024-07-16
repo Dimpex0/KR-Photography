@@ -5,16 +5,26 @@
 
 .image-container {
   position: relative;
-  height: 100%;
-  overflow: hidden;
   text-align: center;
 }
 
+.image-container.vertical {
+  width: 200px;
+  aspect-ratio: 3/4;
+}
+
+.image-container.horizontal {
+  width: 400px;
+  aspect-ratio: 4/3;
+}
+
 .image-container.vertical .image {
+  width: 100%;
   aspect-ratio: 3/4;
 }
 
 .image-container.horizontal .image {
+  width: 100%;
   aspect-ratio: 4/3;
 }
 
@@ -55,5 +65,20 @@
   }
   100% {
     background-color: lightgray;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .image-container.horizontal {
+    width: 100%;
+  }
+
+  .image-container.vertical {
+    width: 100%;
+  }
+
+  .image-container.vertical .image,
+  .image-container.horizontal .image {
+    height: 100%;
   }
 }
