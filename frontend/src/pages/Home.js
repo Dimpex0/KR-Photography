@@ -1,12 +1,14 @@
-import hero1Img from "../assets/images/hero1-min.jpg";
-import hero2Img from "../assets/images/hero2-min.JPG";
-import hero3Img from "../assets/images/hero3-min.JPG";
-import hero4Img from "../assets/images/hero4-min.jpg";
-import hero5Img from "../assets/images/hero5-min.jpg";
+import hero1 from "../assets/images/hero1.jpg";
+import hero2 from "../assets/images/hero2.jpg";
+import hero3 from "../assets/images/hero3.jpg";
+import hero4 from "../assets/images/hero4.JPG";
+import hero5 from "../assets/images/hero5.jpg";
+import hero6 from "../assets/images/hero6.jpg";
+
 import "./home.css";
 
 export default function Home() {
-  const images = [hero3Img, hero4Img, hero5Img, hero2Img, hero1Img];
+  const images = [hero6, hero1, hero2, hero4, hero3, hero5];
 
   document
     .querySelector('meta[property="og:title"]')

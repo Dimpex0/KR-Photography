@@ -30,7 +30,6 @@ function App() {
   useEffect(() => {
     async function checkSession() {
       try {
-        console.log(`${API_DOMAIN}check-session/`);
         const response = await fetch(`${API_DOMAIN}check-session/`, {
           method: "GET",
           credentials: "include",

@@ -11,7 +11,7 @@
 .hero-container {
   position: relative;
   width: 100%;
-  height: var(--hero-image-height); /* Adjust to your needs */
+  height: var(--hero-image-height);
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -39,7 +39,7 @@
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  animation: fade 20s infinite;
+  animation: fade 24s infinite;
 }
 
 .hero-image:nth-child(1) {
@@ -56,6 +56,9 @@
 }
 .hero-image:nth-child(5) {
   animation-delay: 16s;
+}
+.hero-image:nth-child(6) {
+  animation-delay: 20s;
 }
 
 @keyframes fade {
