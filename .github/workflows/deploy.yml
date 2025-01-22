@@ -48,9 +48,9 @@ jobs:
           port: 22
           script: |
             cd ~/KRPhotography
-            docker-compose stop
+            docker compose stop
             docker rmi -f dimpex/krph_backend
             docker rmi -f dimpex/krph_frontend
-            docker-compose up -d
-            docker-compose exec backend python manage.py migrate
-            docker-compose exec backend python manage.py collectstatic --noinput
+            docker compose up -d
+            docker compose exec backend python manage.py migrate
+            docker compose exec backend python manage.py collectstatic --noinput
