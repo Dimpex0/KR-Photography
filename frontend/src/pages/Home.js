@@ -1,6 +1,6 @@
 import hero1Img from "../assets/images/hero1-min.jpg";
 import hero2Img from "../assets/images/hero2-min.JPG";
-import hero3Img from "../assets/images/hero3-min.jpg";
+import hero3Img from "../assets/images/hero3-min.JPG";
 import hero4Img from "../assets/images/hero4-min.jpg";
 import hero5Img from "../assets/images/hero5-min.jpg";
 import "./home.css";
@@ -26,7 +26,7 @@ export default function Home() {
         <h1>Karolina Ruseva</h1>
       </div>
       <main className="home-main">
-        <h1>Моята цел</h1>
+        <h1>Моята цел!</h1>
         <p>
           Стремя се, чрез фотографията си, всеки път да ви връщам към
           съкровеното пътешествие, което животът е разкрил пред вас и неговите
