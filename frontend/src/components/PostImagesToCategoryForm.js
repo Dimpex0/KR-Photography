@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { getCsrfToken } from "../utils/auth";
 import "./PostImagesToCategoryForm.css";
-
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
+import { API_DOMAIN } from "../utils/constants";
 
 export default function PostImagesToCategoryForm({
   children,
@@ -19,7 +18,7 @@ export default function PostImagesToCategoryForm({
     const data = new FormData(e.target);
 
     const response = await fetch(
-      `${apiDomain}post-images-to-category/?category=${category}`,
+      `${API_DOMAIN}post-images-to-category/?category=${category}`,
       {
         method: "POST",
         credentials: "include",

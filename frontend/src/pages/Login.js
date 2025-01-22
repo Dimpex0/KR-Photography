@@ -3,8 +3,7 @@ import { getCsrfToken } from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authActions } from "../store";
-
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
+import { API_DOMAIN } from "../utils/constants";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -16,7 +15,7 @@ export default function Login() {
   async function handleSubmit(e) {
     e.preventDefault();
     setError("");
-    const response = await fetch(`${apiDomain}login/`, {
+    const response = await fetch(`${API_DOMAIN}login/`, {
       method: "POST",
       body: JSON.stringify({ username, password }),
       credentials: "include",

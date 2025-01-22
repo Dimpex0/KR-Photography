@@ -3,8 +3,7 @@ import "./ContactForm.css";
 import { useSelector } from "react-redux";
 import { getCsrfToken } from "../utils/auth";
 import Message from "./Message";
-
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
+import { API_DOMAIN } from "../utils/constants";
 
 export default function ContactForm() {
   const categories = useSelector((state) => state.categories.categories);
@@ -53,7 +52,7 @@ export default function ContactForm() {
     e.preventDefault();
     setIsSending(true);
     const formData = new FormData(e.target);
-    const response = await fetch(`${apiDomain}send-mail/`, {
+    const response = await fetch(`${API_DOMAIN}send-mail/`, {
       method: "POST",
       credentials: "include",
       body: formData,

@@ -6,8 +6,7 @@ import { useSelector } from "react-redux";
 import { categoriesAction } from "../store";
 import { useDispatch } from "react-redux";
 import Footer from "../components/Footer";
-
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
+import { API_DOMAIN } from "../utils/constants";
 
 export default function Root() {
   const dispatch = useDispatch();
@@ -18,7 +17,7 @@ export default function Root() {
 
   useEffect(() => {
     async function fetchCategories() {
-      const response = await fetch(`${apiDomain}get-categories/`);
+      const response = await fetch(`${API_DOMAIN}get-categories/`);
       if (response.ok) {
         const responseData = await response.json();
         setCategories(responseData.categories);

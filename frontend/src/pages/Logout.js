@@ -3,8 +3,7 @@ import { getCsrfToken } from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authActions } from "../store";
-
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
+import { API_DOMAIN } from "../utils/constants";
 
 export default function Logout() {
   const [error, setError] = useState("");
@@ -13,7 +12,7 @@ export default function Logout() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const response = await fetch(`${apiDomain}logout/`, {
+    const response = await fetch(`${API_DOMAIN}logout/`, {
       method: "POST",
       credentials: "include",
       headers: {

@@ -21,7 +21,7 @@ export default function Footer() {
           </a>
         </div>
       </div>
-      <p>&copy;2024 KR Photography. ALL RIGHTS RESERVED</p>
+      <p>&copy;2025 KR Photography. ALL RIGHTS RESERVED</p>
     </footer>
   );
 }

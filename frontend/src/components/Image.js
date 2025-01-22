@@ -2,8 +2,7 @@ import { useState } from "react";
 import "./image.css";
 import { useSelector } from "react-redux";
 import { getCsrfToken } from "../utils/auth";
-
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
+import { API_DOMAIN } from "../utils/constants";
 
 export default function Image({ id, triggerLoading, dimensions, ...props }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -12,7 +11,7 @@ export default function Image({ id, triggerLoading, dimensions, ...props }) {
   const vertical = dimensions.width < dimensions.height;
 
   async function handleDelete() {
-    const response = await fetch(`${apiDomain}delete-image/?id=${id}`, {
+    const response = await fetch(`${API_DOMAIN}delete-image/?id=${id}`, {
       method: "POST",
       credentials: "include",
       headers: {

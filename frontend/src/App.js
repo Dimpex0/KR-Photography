@@ -9,8 +9,7 @@ import { useDispatch } from "react-redux";
 import Gallery from "./pages/Gallery";
 import Services from "./pages/Services";
 import { getCsrfToken } from "./utils/auth";
-
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
+import { API_DOMAIN } from "./utils/constants";
 
 const router = createBrowserRouter([
   {
@@ -31,8 +30,8 @@ function App() {
   useEffect(() => {
     async function checkSession() {
       try {
-        console.log(`${apiDomain}check-session/`);
-        const response = await fetch(`${apiDomain}check-session/`, {
+        console.log(`${API_DOMAIN}check-session/`);
+        const response = await fetch(`${API_DOMAIN}check-session/`, {
           method: "GET",
           credentials: "include",
           headers: {

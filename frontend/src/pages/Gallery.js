@@ -4,9 +4,7 @@ import { useSelector } from "react-redux";
 import Image from "../components/Image";
 import "./gallery.css";
 import PostImagesToCategoryForm from "../components/PostImagesToCategoryForm";
-
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
-const domain = process.env.REACT_APP_DOMAIN;
+import { API_DOMAIN, DOMAIN } from "../utils/constants";
 
 export default function Gallery() {
   const [error, setError] = useState("");
@@ -24,7 +22,7 @@ export default function Gallery() {
   useEffect(() => {
     async function fetchImages() {
       const response = await fetch(
-        `${apiDomain}get-images/?category=${category}`
+        `${API_DOMAIN}get-images/?category=${category}`
       );
       if (!response.ok) {
         setError('Couldn"t fetch images');
@@ -82,7 +80,7 @@ export default function Gallery() {
               dimensions={image.dimensions}
               triggerLoading={setIsLoading}
               alt={`$снимки от категория {category}`}
-              src={`${domain}${image.image}`}
+              src={`${DOMAIN}${image.image}`}
               onClick={() => {
                 setSelectedImage(image);
               }}
@@ -96,7 +94,7 @@ export default function Gallery() {
       </section>
       {selectedImage && (
         <div className="focused-image-container">
-          <img src={`${domain}${selectedImage.image}`} alt={category} />
+          <img src={`${DOMAIN}${selectedImage.image}`} alt={category} />
           <button className="left-arrow" onClick={previousImage}>
             <i className="fa-solid fa-chevron-left"></i>
           </button>
