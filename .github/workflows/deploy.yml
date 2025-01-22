@@ -31,7 +31,7 @@ jobs:
 
       - name: Push Backend Docker image to Docker Hub
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/backend
+          docker push ${{ secrets.DOCKER_USERNAME }}/krph_backend
 
   deploy:
     name: Deploy to VPS using docker-compose
@@ -54,4 +54,3 @@ jobs:
             docker-compose up -d
             docker-compose exec backend python manage.py migrate
             docker-compose exec backend python manage.py collectstatic --noinput
-            
